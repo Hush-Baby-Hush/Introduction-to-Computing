@@ -1,0 +1,15 @@
+// Symbol table
+// Scope level 0:
+//	Symbol Name       Page Address
+//	----------------  ------------
+//	FND_FNT           3006
+//	PRNT_ST           300D
+//	PRNT_LP           3010
+//	SKIP              3014
+//	NEXT              3016
+//	NXT_LN            301A
+//	NL_CHAR           3020
+//	CHAR              3021
+//	DONE              3022
+//	FONT_DATA         3023
+

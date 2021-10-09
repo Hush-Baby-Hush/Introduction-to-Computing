@@ -1,0 +1,26 @@
+Question 1: Describe the errors that occur when trying to assemble lab11.asm. Identify the cause of each error.
+
+line 14:  x3000  ; should be .ORIG x3000
+line 17:  LD    R2,x3010  ; x3010 is too big for the pc offset. LD only allows offset 9 bit, 2^8-1 = #255 < x100 < x3010
+line 19:  ADD   R3,,R3,R2 ; should only have one comma between registers. should be ADD R3, R3, R2
+line 30:  LD    R5,x300F  ; x300F is too big for the pc offset. LD only allows offset 9 bit, 2^8-1 = #255 < x100 < x300F
+line 32:  BRpz  OUTERLOOP ; should be BRzp OUTERLOOP, or it will show "label OUTERLOOP has already appeared".
+line 35:  ST    R1,x3011  ; x3011 is too big for the pc offset. ST only allows offset 9 bit, 2^8-1 = #255 < x100 < x3011
+lost .END at the end of the program. 
+
+
+Question 2: For each label in the code, write down the corresponding memory location. 
+
+OUTERLOOP x3006
+INNERLOOP x3007
+INPUT     x3010
+ZERO      x3011
+NEG1      x3012
+RESULT    x3013
+
+
+Question 3: Between using labels and explicit memory locations/offsets, which one makes the most sense, and why?
+
+Labels makes the most sense. Because Labels is more clear and we don't need to calculate offset every time we add or delete a line.
+We can know where the pc will jump to and did what instruction clearly without calculating. We can forcus on the instruction instead
+of address by using labels. 

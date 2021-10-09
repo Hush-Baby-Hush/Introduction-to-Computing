@@ -1,0 +1,27 @@
+; This is the file you will use for the lab assignment
+; Make sure to comment your code properly and don't exceed 
+; the line limitation for this assignment.  Good luck!
+
+0011 0001 0000 0000 ; x3100 - starting address of the program
+
+; The program description and code starts here
+
+; Name: Zhongyan Liu    
+; Date: 11/15/2019
+; This program calculate the sum of all the positive numbers in a array of 10 numbers
+; R2, variable, store the number being examined. 
+; R3, point to the address of the numbers to be read
+; R4, count the number of remaining numbers to be read
+; R5, sum of all the positive numbers in the array
+
+1110 011 000110001      ; LEA R3, x31         let R3 point to address x3032, the first number
+0101 100 100 1 00000    ; AND R4, R4, #0      initialize R4 to zero
+0001 100 100 1 01010    ; ADD R4, R4, #10     let R4 be 10
+0101 101 101 1 00000    ; AND R5, R5, #0      initialize R5 to zero
+0110 010 011 000000     ; LDR R2, R3, #0      load the number to which R3 point to R2
+0000 100 000000001      ; BRn #1              if the number is negative, jump one line
+0001 101 010 0 00 101   ; ADD R5, R2, R5      if the number is positive, add it to R5
+0001 011 011 1 00001    ; ADD R3, R3, #1      increase R3 by 1
+0001 100 100 1 11111    ; ADD R4, R4, #-1     decrease R4 by 1
+0000 001 111111010      ; BRp #-6             if R4 is positive, loop
+1111 0000 00100101      
